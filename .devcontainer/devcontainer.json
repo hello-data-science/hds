@@ -1,0 +1,21 @@
+{
+    "name": "hds_stats_foundations",
+    "build": {
+        "dockerfile": "../dockerfile"
+    },
+    "settings": {},
+    "extensions": [
+        "quarto.quarto",
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-vscode.vscode-typescript-tslint-plugin",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "ms-azuretools.vscode-docker",
+        "GitHub.copilot",
+        "Google.geminicodeassist"
+    ],
+    "postCreateCommand": "if [ ! -d \"venv\"; then python -m venv venv && . venv/bin/activate && pip install --no-cache-dir -r requirements.txt; fi",
+    "forwardPorts": []
+}

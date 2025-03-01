@@ -1,0 +1,738 @@
+---
+title: "R programming basics"
+date: "2025-03-01"
+author: "Abraham Olvera Barrios & Alasdair Warwick"
+format: live-html
+editor_options: 
+  chunk_output_type: inline
+---
+
+::: callout-tip
+## TLDR
+
+-   R can be used as a calculator for basic arithmetic operations.
+-   Variables are assigned using the `<-` operator.
+-   Data frames are used to store tabular data.
+-   Understanding different object types in R is crucial for data manipulation.
+-   Logical and comparison operators help in making decisions.
+-   Loops and functions are essential for repetitive tasks and code organization.
+:::
+
+Welcome to R programming! This guide will introduce you to the basics of R, starting with simple calculations, then moving on to assigning variables, working with data frames, and exploring different object types.
+
+## Introduction
+
+### Using R as a Calculator
+
+R can be used to perform basic arithmetic operations just like a calculator.
+
+```{webr}
+# Addition
+3 + 5
+
+# Subtraction
+10 - 4
+
+# Multiplication
+6 * 7
+
+# Division
+20 / 4
+
+# Exponentiation
+2^3
+```
+
+### Assigning Variables
+
+In R, you can assign values to variables using the `<-` operator.
+
+```{webr}
+# Assigning a value to a variable
+x <- 10
+y <- 5
+
+# Using variables in calculations
+sum <- x + y
+sum
+```
+
+### Data Frames
+
+Data frames are a fundamental data structure in R, used to store tabular data. Each column in a data frame is a [vector](#sect-vectors) of values of the same type. This structure allows for efficient data manipulation and analysis. Data frames are actually a special type of [list](#sect-lists), where each item is a [vector](#sect-vectors) of the same length. Understanding the different types of variables in R is crucial for working with data frames. So far, we have only mentioned numeric types, but we will cover other types now!
+
+```{webr}
+# Creating a data frame
+df <- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 35),
+  Score = c(90, 85, 88)
+)
+
+# Display the data frame
+df
+```
+
+## Objects
+
+### Basic Types
+
+Scalars
+
+```{webr}
+# logical
+TRUE
+
+# numeric
+1
+
+# character
+"a"
+
+# missing
+NA
+```
+
+### Vectors {#sect-vectors}
+
+Combine objects **of the same type** in a vector
+
+```{webr}
+# logical
+c(TRUE, FALSE)
+
+# numeric
+c(1, 2, 3)
+
+# character
+c("a", "b")
+```
+
+Access items using square brackets
+
+```{webr}
+# numbering starts from 1 (unlike many other programming languages, which start with 0)
+my_vector <- c("a", "b", "c")
+my_vector[1]
+
+# `letters` is a built in vector
+letters[24]
+
+# select multiple items with a vector of indices
+letters[c(1, 24)]
+```
+
+```{webr}
+my_vector_f <- c("apple", "banana", "cherry", "mango")
+my_vector_f[c(1, 3)] 
+```
+
+```{webr}
+# Using : to specify a range of indices
+letters[3:10]
+```
+
+```{webr}
+my_vector
+# Negative index to exclude a specific element 
+my_vector[-2]
+```
+
+```{webr}
+speed <- c(25, 30, 45, 60, 50, 90, 73)
+speed[2]      
+speed[c(1, 4)]  
+speed[speed > 40]  
+```
+
+```{webr}
+length(speed)
+```
+
+### Lists {#sect-lists}
+
+Combine objects of different types in a list
+
+```{webr}
+# unnamed list
+my_list <- list(c(TRUE, FALSE), c(1, 2, 3), c("a", "b"))
+my_list
+names(my_list)
+```
+
+List elements can be named
+
+```{webr}
+# named list
+my_named_list <- list(
+  logical = c(TRUE, FALSE),
+  numeric = c(1, 2),
+  character = c("a", "b")
+)
+my_named_list
+names(my_named_list)
+```
+
+Lists can contain lists (nested lists)
+
+```{webr}
+nested_list <- list("a", list("b", list("c")))
+nested_list
+
+# more clearly visualised with lobstr package
+lobstr::tree(nested_list)
+```
+
+```{webr}
+# nested example
+another_nested_list <- 
+  list(
+  numeric = list(1, 2, 3),
+  characters = list("a", list("b", list("c", "d"))),
+  logical = TRUE
+)
+another_nested_list
+lobstr::tree(another_nested_list)
+```
+
+Subset lists using square brackets
+
+```{webr}
+my_named_list[c(1, 2)]
+```
+
+Access list items with double square brackets or `$`
+
+```{webr}
+# with double square brackets supply item name in quotes - return
+my_named_list[["character"]]
+
+# when using `$`, quotes are not needed
+my_named_list$character
+
+# with the former approach, the item name can be supplied as an object
+x <- "character"
+my_named_list[[x]]
+```
+
+```{webr}
+c(my_named_list[["character"]], my_named_list[["logical"]])
+
+# Use [] to access elements of a list without flattening
+c(my_named_list["character"], my_named_list["logical"])
+
+str(c(my_named_list[["character"]], my_named_list[["logical"]])) # A vector 
+str(c(my_named_list["character"], my_named_list["logical"])) # A list of 2
+```
+
+### Data Frames
+
+A special type of list, where each item is a vector of the same length
+
+```{webr}
+# create by hand with data.frame()
+data.frame(x = c(1, 2, 3), y = c("a", "b"))
+
+# convert from a list with as.data.frame()
+df <- as.data.frame(my_named_list)
+df
+```
+
+Subset with square brackets
+
+```{webr}
+# first row, all columns
+df[1, ]
+
+# all rows, first two columns
+df[, c(1, 2)]
+
+# (also) all rows, first two columns
+df[, c("logical", "numeric")]
+```
+
+Access columns with double square brackets, or `$`. Both methods return a vector
+
+```{webr}
+# with double square brackets supply column name in quotes - return
+df[["character"]]
+
+# when using `$`, quotes are not needed
+df$character
+
+# with the former approach, the column name can be supplied as an object
+x <- "character"
+df[[x]]
+```
+
+### Functions
+
+Functions are blocks of code
+
+```{webr}
+# create a function with function() { <INSERT CODE> }
+hello_world <- function() {
+  print("Hello world")
+}
+
+# view the function by simply typing its name
+hello_world
+```
+
+Functions may be called to execute the code they contain
+
+```{webr}
+hello_world()
+```
+
+Arguments extend function utility
+
+```{webr}
+hello <- function(x) {
+  print(paste("Hello", x))
+}
+
+hello("world!")
+hello("moon!")
+```
+
+## Conditions
+
+### Comparison operators
+
+| Operator | Description              | Example  | Result  |
+|----------|--------------------------|----------|---------|
+| `==`     | Equal to                 | `5 == 5` | `TRUE`  |
+| `!=`     | Not equal to             | `5 != 4` | `TRUE`  |
+| `<`      | Less than                | `3 < 5`  | `TRUE`  |
+| `>`      | Greater than             | `3 > 5`  | `FALSE` |
+| `<=`     | Less than or equal to    | `3 <= 3` | `TRUE`  |
+| `>=`     | Greater than or equal to | `3 >= 5` | `FALSE` |
+
+### Logical operators
+
+| Operator | Description | Example | Result |
+|----------------|------------------------|----------------|----------------|
+| `&` | Element-wise AND | `c(TRUE, FALSE) & c(TRUE, TRUE)` | `TRUE FALSE` |
+| `|` | Element-wise OR | `c(TRUE, FALSE) | c(FALSE, TRUE)` | `TRUE TRUE` |
+| `!` | NOT | `!TRUE` | `FALSE` |
+| `%in%` | Checks if elements in one vector are present in another vector | `2 %in% c(1, 2, 3)` | `TRUE` |
+
+Examples
+
+```{webr}
+# returns TRUE
+"a" %in% letters[c(1, 2)]
+
+# returns FALSE
+!TRUE
+
+# returns TRUE
+TRUE | FALSE
+
+# returns FALSE
+TRUE & FALSE
+```
+
+### if, else if, else
+
+```{webr}
+# try assigning different values to x
+x <- 3
+
+if (x > 1) {
+  print("x is bigger than 1")
+} else if (x == 1) {
+  print("x equals 1")
+} else {
+  print("x is greater than 1")
+}
+```
+
+## Data wrangling
+
+With the foundational knowledge we've covered, we can now begin to manipulate our data frames effectively.
+
+### Filtering rows
+
+Use a data mask
+
+```{webr}
+# a data mask - a logical vector
+data_mask <- df$numeric > 1
+data_mask
+
+# can be used to subset (filter) rows in a data frame
+df[data_mask, ]
+```
+
+### Creating columns
+
+```{webr}
+# create a new column
+new_column <- ifelse(df$numeric > 1,
+                     yes = "Greater than 1",
+                     no = "Less than 1")
+df2 <- df
+df2$greater_than_1 <- new_column
+df2
+
+# overwrite an existing column
+df3 <- df2
+df3$character <- toupper(df3$character)
+df3
+```
+
+## Loops
+
+Loops are an essential concept in programming, allowing you to automate repetitive tasks efficiently. They enable you to execute a block of code multiple times, which can save time and reduce errors in your code.
+
+### For loops
+
+Do something for each item in an interable (vector/list)
+
+```{webr}
+for (item in my_list) {
+  print(class(item))
+}
+```
+
+Can also loop through by index using `seq_along()`
+
+```{webr}
+for (i in seq_along(my_list)) {
+  print(i)
+  print(class(my_list[[i]]))
+}
+```
+
+A common pattern is to create an empty list to hold the results from your loop
+
+```{webr}
+# initiate an empty list
+result <- list()
+
+# loop through an iterable
+iterable <- c(1, 2, 3, 4, 5)
+
+for (i in seq_along(iterable)) {
+  result[[LETTERS[i]]] <- iterable[i]
+}
+
+# final result
+result
+```
+
+### While loops
+
+Continue looping while a certain condition is met (beware infinite loops!)
+
+```{webr}
+x <- 0
+
+while (x < 5) {
+  print(x)
+  x <- x + 1
+}
+```
+
+## Exercises
+
+Now it's time to practice what you've learned. Try the following exercises. Hints are available if you get stuck, and your answers will be graded.
+
+### Exercise 1: Basic Arithmetic
+
+Calculate the sum of 15 and 25.
+
+```{webr}
+#| exercise: ex_1
+15 + ______
+```
+
+::: { .hint exercise="ex_1"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Remember to use the `+` operator for addition.
+
+```r
+15 + 25
+```
+:::
+:::
+
+::: { .solution exercise="ex_1" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Simply add the two numbers:
+
+```r
+15 + 25
+```
+:::
+:::
+
+```{webr}
+#| exercise: ex_1
+#| check: true
+if (identical(.result, 40)) {
+  list(correct = TRUE, message = "Correct! Well done.")
+} else {
+  list(correct = FALSE, message = "Incorrect. Try again.")
+}
+```
+
+### Exercise 2: Assigning Variables
+
+Assign the value 100 to a variable named `a` and the value 200 to a variable named `b`. Then calculate their sum.
+
+```{webr}
+#| exercise: ex_2
+a <- ______
+b <- ______
+a + b
+```
+
+::: { .hint exercise="ex_2"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Use the `<-` operator to assign values to variables.
+
+```r
+a <- 100
+b <- 200
+```
+:::
+:::
+
+::: { .solution exercise="ex_2" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Assign the values and calculate the sum:
+
+```r
+a <- 100
+b <- 200
+a + b
+```
+:::
+:::
+
+```{webr}
+#| exercise: ex_2
+#| check: true
+if (identical(.result, 300)) {
+  list(correct = TRUE, message = "Correct! Well done.")
+} else {
+  list(correct = FALSE, message = "Incorrect. Try again.")
+}
+```
+
+### Exercise 3: Logical Operators
+
+Check if the number 5 is greater than 3 and less than 10.
+
+```{webr}
+#| exercise: ex_3
+5 > 3 & 5 < ______
+```
+
+::: { .hint exercise="ex_3"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Use the `&` operator to combine two logical conditions.
+
+```r
+5 > 3 & 5 < 10
+```
+:::
+:::
+
+::: { .solution exercise="ex_3" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Combine the two conditions using the `&` operator:
+
+```r
+5 > 3 & 5 < 10
+```
+:::
+:::
+
+```{webr}
+#| exercise: ex_3
+#| check: true
+if (identical(.result, TRUE)) {
+  list(correct = TRUE, message = "Correct! Well done.")
+} else {
+  list(correct = FALSE, message = "Incorrect. Try again.")
+}
+```
+
+### Exercise 4: For Loop
+
+Write a for loop to create a list containing the numbers 1 to 5.
+
+```{webr}
+#| exercise: ex_4
+result <- list()
+for (i in 1:5) {
+  result <- c(result, ______)
+}
+result
+```
+
+::: { .hint exercise="ex_4"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Use the `c()` function to append to a list.
+
+```r
+# empty list
+result <- list()
+
+# append `1` to the empty list using `c()`
+result <- c(result, 1)
+```
+:::
+:::
+
+::: { .solution exercise="ex_4" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Use `c()` to grow the list:
+
+```r
+result <- list()
+for (i in 1:5) {
+  result <- c(result, i)
+}
+result
+```
+:::
+:::
+
+```{webr}
+#| exercise: ex_4
+#| check: true
+if (identical(.result, as.list(1:5))) {
+  list(correct = TRUE, message = "Correct! Well done.")
+} else {
+  list(correct = FALSE, message = "Incorrect. Try again.")
+}
+```
+
+### Exercise 5: While Loop
+
+Write a while loop to create a list containing the numbers 1 to 5.
+
+```{webr}
+#| exercise: ex_5
+result <- list()
+x <- 1
+while (x <= 5) {
+  result <- c(result, x)
+  x <- x + ______
+}
+result
+```
+
+::: { .hint exercise="ex_5"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Increment the value of `x` by 1 in each iteration.
+
+```r
+x <- 1
+
+# the loop will complete when the value of `x` reaches 6
+while (x <= 5) {
+  x <- x + 1
+}
+```
+:::
+:::
+
+::: { .solution exercise="ex_5" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Write the while loop to increment `x` and grow the list:
+
+```r
+result <- list()
+x <- 1
+while (x <= 5) {
+  result <- c(result, x)
+  x <- x + 1
+}
+result
+```
+:::
+:::
+
+```{webr}
+#| exercise: ex_5
+#| check: true
+if (all.equal(.result, as.list(1:5))) {
+  list(correct = TRUE, message = "Correct! Well done.")
+} else {
+  list(correct = FALSE, message = "Incorrect. Try again.")
+}
+```
+
+### Exercise 6: Data Frames - filter rows
+
+Filter this data frame for people aged 30 or older.
+
+```{webr}
+#| exercise: ex_6
+df <- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Age = c(25, 30, 35)
+)
+df[______, ]
+```
+
+::: { .hint exercise="ex_6"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Use square brackets to filter rows.
+
+```r
+# Filter for rows where name is "Alice"
+df[df$Name == "Alice", ]
+```
+:::
+:::
+
+::: { .solution exercise="ex_6" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Filter the data frame using square brackets:
+
+```r
+df[df$Age >= 30, ]
+```
+:::
+:::
+
+```{webr}
+#| exercise: ex_6
+#| check: true
+if (all.equal(.result, data.frame(Name = c("Bob", "Charlie"), Age = c(30, 35)), check.attributes = FALSE)) {
+  list(correct = TRUE, message = "Correct! Well done.")
+} else {
+  list(correct = FALSE, message = "Incorrect. Try again.")
+}
+```

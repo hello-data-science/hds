@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: "docs"
+  render: 
+    - "*.qmd"
+    - "!_*.qmd"
 
 website:
   title: "Hello Data Science"
@@ -21,6 +24,20 @@ website:
 
 format:
   html:
+    mermaid:
+      theme: default
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    code-fold: true
+    code-link: true
+    code-tools:
+      source: repo
+      toggle: true
+      caption: Code
+  live-html:
     mermaid:
       theme: default
     theme:

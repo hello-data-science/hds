@@ -5,16 +5,25 @@ FROM python:3.10-slim
 RUN apt-get update && apt-get install -y \
     curl \
     git \
-    wget \ 
-    gdebi-core \ 
+    wget \
+    gdebi-core \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install rig
+RUN curl -Ls https://github.com/r-lib/rig/releases/download/latest/rig-linux-$(arch)-latest.tar.gz | `which sudo` tar xz -C /usr/local
+
+# Add rig to PATH
+ENV PATH="/usr/local/bin:$PATH"
+
+# Install R using rig
+RUN rig add release
 
 # Set architecture-specific Quarto URL
 # This runs at build time to determine the architecture and download the correct Quarto package.
 RUN ARCH=$(uname -m) && \
     if [ "$(uname -m)" = "x86_64" ]; then \
         ARCH="amd64"; \
-        elif [ "$(uname -m)" = "arm64" ] || [ "$(uname -m)" = "aarch64" ]; then \
+    elif [ "$(uname -m)" = "arm64" ] || [ "$(uname -m)" = "aarch64" ]; then \
         ARCH="arm64"; \
     else \
         echo "Unsupported architecture"; exit 1; \

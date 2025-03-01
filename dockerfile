@@ -34,6 +34,9 @@ RUN ARCH=$(uname -m) && \
 # Verify Quarto installation
 RUN quarto --version
 
+# Install the quarto-live extension
+RUN quarto add --force r-wasm/quarto-live
+
 # Define an argument for the working directory
 ARG WORKDIR=/workspaces/hds
 

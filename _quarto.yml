@@ -19,9 +19,6 @@ website:
   repo-branch: main
   reader-mode: true
 
-filters:
-  - shinylive
-
 format:
   html:
     mermaid:

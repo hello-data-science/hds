@@ -2,6 +2,165 @@
 title: "Hello Data Science"
 ---
 
-This is a Quarto website.
+> Start your journey here 🙂
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Data science combines programming (Python, R, Bash), statistics, and machine learning to transform raw data into valuable insights. The real power comes from automation—writing scripts that can process enormous amounts of data consistently and repeatedly, enabling workflows impossible with manual methods. Today, AI-assisted programming tools make these skills more accessible than ever, allowing beginners to enter the field faster.
+
+Hello Data Science is designed to provide a comprehensive foundation in all these essential skills. Rather than diving deep into just one specialty, we cover the full spectrum of knowledge needed by modern data scientists. This approach ensures you develop a solid base from which you can later specialise in machine learning, software engineering, data engineering, or other focus areas, while always understanding how your specialty connects to the broader data science ecosystem.
+
+::: {.callout-tip collapse="true"}
+# Expand for more motivation 💪🏼
+
+## What is Data Science?
+
+Imagine you have a mountain of information but no easy way to make sense of it. Data science gives you the tools to transform raw data into valuable insights that can help make better decisions.
+
+Think of data science as being a detective, but for information. You gather clues (data), use special tools to examine them (programming and statistics), and piece together the full story (analysis and visualization).
+
+## The Core Skills You'll Need
+
+### 1. Programming Languages
+
+> **Python:** The Swiss Army knife of data science
+
+- Versatile and relatively easy to learn
+- Massive ecosystem of data tools (pandas, numpy, scikit-learn)
+- Great for beginners and professionals alike
+
+> **R:** The statistician's best friend
+
+- Designed specifically for statistical analysis and visualization
+- Excellent for creating detailed data graphics
+- Powerful for specialized statistical techniques
+
+> **Bash/Command Line:** Your direct line to the computer
+
+- Essential for navigating files and running programs efficiently
+- Allows you to string together different tools quickly
+- Opens up the full power of your computer beyond point-and-click interfaces
+
+### 2. Statistical Thinking
+
+Statistics is the language data speaks. You'll need to understand:
+
+- How to summarise data (averages, ranges, distributions)
+- How to test ideas against data (hypothesis testing)
+- How to predict outcomes from patterns (regression, forecasting)
+- How to account for uncertainty in your conclusions
+
+### 3. Machine Learning & AI
+
+Machine learning is what allows computers to learn patterns from data without being explicitly programmed:
+
+- Supervised learning (making predictions based on labeled examples)
+- Unsupervised learning (finding hidden patterns and groups)
+- Deep learning (using neural networks for complex problems like image recognition)
+- Model evaluation (determining how well your models perform)
+
+AI tools provide the ability to work with unstructured data like text, images, and speech—expanding what's possible with traditional data analysis.
+
+### 4. Data Handling Skills
+
+- Cleaning messy data (removing errors, handling missing values)
+- Transforming data into useful formats
+- Merging information from different sources
+- Storing and retrieving data efficiently
+
+### 5. Visualization
+
+- Creating clear, informative graphics
+- Choosing the right visualization for your data
+- Communicating findings visually to non-technical audiences
+
+## The Magic of Automation: Beyond Point-and-Click
+
+Here's where data science truly becomes powerful. Imagine these scenarios:
+
+### Without Automation (Manual Approach):
+
+- You need to clean 1,000 files with customer data
+- For each file, you'd need to open it, find errors, fix them, save it
+- This could take weeks of tedious work
+- If the process changes, you start over
+
+### With Automation (Data Science Approach):
+
+- Write a script once that defines the cleaning rules
+- Run it on all 1,000 files in minutes
+- If something changes, update the script and rerun
+- Your process is documented in code, making it repeatable and shareable
+
+### Why Automation Changes Everything
+
+- Scale: Process thousands or millions of data points instead of dozens
+- Consistency: The same exact process happens every time
+- Reproducibility: Others can run your exact analysis and get the same results
+- Adaptability: When requirements change, update the code instead of redoing everything
+- Documentation: Your code serves as a record of exactly what you did
+
+### A Simple Example
+
+Imagine you receive daily sales data files and need to:
+
+- Check for missing values
+- Calculate daily totals by product category
+- Create a visualization of trends
+- Email a report to your team
+
+**Manual approach:** 2-3 hours daily of opening files, copying data to Excel, making charts, writing emails
+
+**Automated approach:**
+
+- Write a script that does all of the above
+- Schedule it to run automatically every morning
+- Arrive at work with the report already in everyone's inbox
+- Use your time for analyzing the results instead of generating them
+
+## AI-Assisted Data Science: More Accessible Than Ever
+
+The rise of AI-powered coding assistants has made data science significantly more accessible:
+
+- Code completion tools suggest the next lines as you type
+- AI programming assistants can write entire functions based on your description
+- Automated documentation helps explain what code does
+- Debugging assistance spots errors and suggests fixes
+- Natural language interfaces let you request complex operations in plain English
+
+With these tools, beginners can:
+
+- Learn faster by seeing correct code patterns
+- Overcome syntax hurdles more easily
+- Focus on concepts rather than memorizing commands
+- Accomplish complex tasks before mastering all the underlying details
+
+This democratization means you can start solving real problems much earlier in your learning journey than was possible just a few years ago.
+
+## Starting Your Journey
+
+- Begin with the basics of Bash, and either Python or R
+- Learn to handle data files and do simple analysis
+- Practice automating repetitive tasks
+- Build a foundation in statistics alongside your programming skills
+- Experiment with AI coding assistants to accelerate your progress
+- Work on projects using real data that interests you
+
+Remember: The goal isn't just to learn programming languages or statistical formulas. The goal is to solve problems and answer questions using data. The programming and statistics are the tools that make this possible.
+
+## Real-World Impact
+
+Data science automation enables:
+
+- Businesses to personalise recommendations for millions of customers
+- Medical researchers to analyse genetic data across thousands of patients
+- Cities to optimise traffic flow based on millions of data points
+- Scientists to process satellite imagery of the entire planet
+
+None of these would be possible with manual, point-and-click approaches. Automation is what transforms data from overwhelming to insightful.
+:::
+
+## Where do I start?
+
+TODO
+
+- 'Start here' series of blog posts
+- More advanced (databases, API, web scraping, software engineering e.g. unit testing)

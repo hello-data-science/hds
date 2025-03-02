@@ -1,0 +1,220 @@
+---
+title: "Miscellaneous R Exercises"
+date: "2025-03-01"
+author: "Alasdair Warwick"
+format:
+  live-html:
+    mermaid:
+      theme: default
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    code-fold: true
+    code-link: true
+    code-tools:
+      source: repo
+      toggle: true
+      caption: Code
+webr:
+  packages:
+    - dplyr
+    - tibble
+editor_options: 
+  chunk_output_type: inline
+---
+
+## Setup
+
+```{webr}
+#| edit: false
+# convert to tibble for more concise print output
+iris <- tibble::as_tibble(iris)
+```
+
+## Exercises
+
+### dplyr Select vs Base R
+
+Write the dplyr equivalent for selecting columns "Sepal.Length" and "Sepal.Width" from the iris dataset.
+
+```{webr}
+#| exercise: dplyr_select_v_base
+iris[, c("Sepal.Length", "Sepal.Width")]
+```
+
+::: { .hint exercise="dplyr_select_v_base"}
+::: { .callout-note collapse="false"}
+## Hint
+
+Use `dplyr::select()` to select specific columns.
+
+```r
+iris |>
+    select(Sepal.Length)
+```
+:::
+:::
+
+::: { .solution exercise="dplyr_select_v_base" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Use `select()` to select the columns:
+
+```r
+iris |>
+    select(Sepal.Length, Sepal.Width)
+```
+:::
+:::
+
+```{webr}
+#| exercise: dplyr_select_v_base
+#| check: true
+if (all.equal(.result, select(iris, Sepal.Length, Sepal.Width))) {
+  list(correct = TRUE, message = "Correct! Well done.")
+} else {
+  list(correct = FALSE, message = "Incorrect. Try again.")
+}
+```
+
+### dplyr Filter vs Base R
+
+Write the dplyr equivalent for filtering rows where Sepal.Length is less than 5.
+
+```{webr}
+#| exercise: dplyr_filter_v_base
+iris[iris$Sepal.Length < 5, ]
+```
+
+::: { .hint exercise="dplyr_filter_v_base"}
+::: { .callout-note collapse="false"}
+## Hint
+
+Use `dplyr::filter()` to filter rows based on a condition.
+
+```r
+iris |>
+    filter(Sepal.Length == 5)
+```
+:::
+:::
+
+::: { .solution exercise="dplyr_filter_v_base" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Use `dplyr::filter()` to filter the rows:
+
+```r
+iris |>
+    filter(Sepal.Length < 5)
+```
+:::
+:::
+
+```{webr}
+#| exercise: dplyr_filter_v_base
+#| check: true
+if (all.equal(.result, filter(iris, Sepal.Length < 5))) {
+  list(correct = TRUE, message = "Correct! Well done.")
+} else {
+  list(correct = FALSE, message = "Incorrect. Try again.")
+}
+```
+
+### dplyr Select and Filter vs Base R
+
+Write the dplyr equivalent for selecting columns "Sepal.Length" and "Sepal.Width" from rows where Sepal.Length is less than 5.
+
+```{webr}
+#| exercise: dplyr_select_filter_v_base
+iris[iris$Sepal.Length < 5, c("Sepal.Length", "Sepal.Width")]
+```
+
+::: { .hint exercise="dplyr_select_filter_v_base"}
+::: { .callout-note collapse="false"}
+## Hint
+
+Use `dplyr::filter()` and `dplyr::select()` together.
+
+```r
+iris |>
+    filter(Sepal.Length > 5) |>
+    select(Sepal.Width)
+```
+:::
+:::
+
+::: { .solution exercise="dplyr_select_filter_v_base" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Use `dplyr::filter()` and `dplyr::select()` together:
+
+```r
+iris |>
+    filter(Sepal.Length < 5) |>
+    select(Sepal.Length, Sepal.Width)
+```
+:::
+:::
+
+```{webr}
+#| exercise: dplyr_select_filter_v_base
+#| check: true
+if (all.equal(.result, filter(iris, Sepal.Length < 5) |> select(Sepal.Length, Sepal.Width))) {
+  list(correct = TRUE, message = "Correct! Well done.")
+} else {
+  list(correct = FALSE, message = "Incorrect. Try again.")
+}
+```
+
+### dplyr Pull vs Base R
+
+Write the dplyr equivalent for pulling the Sepal.Length column from rows where Sepal.Length is less than 5.
+
+```{webr}
+#| exercise: dplyr_pull_v_base
+iris[iris$Sepal.Length < 5, ]$Sepal.Length
+```
+
+::: { .hint exercise="dplyr_pull_v_base"}
+::: { .callout-note collapse="false"}
+## Hint
+
+Use `dplyr::pull()` to extract a single column.
+
+```r
+iris |>
+    filter(Sepal.Length >= 5) |>
+    pull(Sepal.Width)
+```
+:::
+:::
+
+::: { .solution exercise="dplyr_pull_v_base" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Use `dplyr::filter()` and `dplyr::pull()` together:
+
+```r
+iris |>
+    filter(Sepal.Length < 5) |>
+    pull(Sepal.Length)
+```
+:::
+:::
+
+```{webr}
+#| exercise: dplyr_pull_v_base
+#| check: true
+if (all.equal(.result, filter(iris, Sepal.Length < 5) |> pull(Sepal.Length))) {
+  list(correct = TRUE, message = "Correct! Well done.")
+} else {
+  list(correct = FALSE, message = "Incorrect. Try again.")
+}
+```

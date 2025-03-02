@@ -1,5 +1,7 @@
 # Hello Data Science
 
+![Lifecycle: WIP](https://img.shields.io/badge/lifecycle-WIP-yellow)
+
 > Start your journey here 🙂
 
 Data science combines programming (Python, R, Bash), statistics, and machine learning to transform raw data into valuable insights. The real power comes from automation—writing scripts that can process enormous amounts of data consistently and repeatedly, enabling workflows impossible with manual methods. Today, AI-assisted programming tools make these skills more accessible than ever, allowing beginners to enter the field faster.

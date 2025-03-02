@@ -1,0 +1,722 @@
+---
+title: "Python Programming Basics"
+date: "2025-03-01"
+author: "Abraham Olvera Barrios & Alasdair Warwick"
+format:
+  live-html:
+    mermaid:
+      theme: default
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    code-fold: true
+    code-link: true
+    code-tools:
+      source: repo
+      toggle: true
+      caption: Code
+editor_options: 
+  chunk_output_type: inline
+---
+
+::: callout-tip
+## TLDR
+
+-   Python can be used as a calculator for basic arithmetic operations.
+-   Variables are assigned using the `=` operator.
+-   DataFrames are used to store tabular data using the pandas library.
+-   Understanding different object types in Python is crucial for data manipulation.
+-   Logical and comparison operators help in making decisions.
+-   Loops and functions are essential for repetitive tasks and code organization.
+:::
+
+Welcome to Python programming! This guide will introduce you to the basics of Python, starting with simple calculations, then moving on to assigning variables, working with DataFrames, and exploring different object types.
+
+## Introduction
+
+### Using Python as a Calculator
+
+Python can be used to perform basic arithmetic operations just like a calculator.
+
+```{pyodide}
+# Addition
+3 + 5
+
+# Subtraction
+10 - 4
+
+# Multiplication
+6 * 7
+
+# Division
+20 / 4
+
+# Exponentiation
+2**3
+```
+
+### Assigning Variables
+
+In Python, you can assign values to variables using the `=` operator.
+
+```{pyodide}
+# Assigning a value to a variable
+x = 10
+y = 5
+
+# Using variables in calculations
+sum = x + y
+sum
+```
+
+### DataFrames
+
+DataFrames are a fundamental data structure in Python, used to store tabular data. Each column in a DataFrame is a series of values of the same type. This structure allows for efficient data manipulation and analysis. DataFrames are created using the pandas library.
+
+```{pyodide}
+import pandas as pd
+
+# Creating a DataFrame
+df = pd.DataFrame({
+  "Name": ["Alice", "Bob", "Charlie"],
+  "Age": [25, 30, 35],
+  "Score": [90, 85, 88]
+})
+
+# Display the DataFrame
+df
+```
+
+## Objects
+
+### Basic Types
+
+Scalars
+
+```{pyodide}
+# boolean
+True
+
+# numeric
+1
+
+# string
+"a"
+
+# missing
+None
+```
+
+### Lists
+
+Combine objects **of the same type** in a list
+
+```{pyodide}
+# boolean
+[True, False]
+
+# numeric
+[1, 2, 3]
+
+# string
+["a", "b"]
+```
+
+Access items using square brackets
+
+```{pyodide}
+# numbering starts from 0 (unlike R, which starts with 1)
+my_list = ["a", "b", "c"]
+my_list[0]
+
+# select multiple items with a list of indices
+[my_list[i] for i in [0, 2]]
+```
+
+```{pyodide}
+my_list_f = ["apple", "banana", "cherry", "mango"]
+[my_list_f[i] for i in [0, 2]]
+```
+
+```{pyodide}
+# Using range() to specify a range of indices
+my_list[2:10]
+```
+
+```{pyodide}
+my_list
+# Negative index to exclude a specific element 
+my_list[:-2]
+```
+
+```{pyodide}
+speed = [25, 30, 45, 60, 50, 90, 73]
+speed[1]      
+[speed[i] for i in [0, 3]]  
+[s for s in speed if s > 40]  
+```
+
+```{pyodide}
+len(speed)
+```
+
+### Dictionaries
+
+Combine objects of different types in a dictionary
+
+```{pyodide}
+# unnamed dictionary
+my_dict = {"logical": [True, False], "numeric": [1, 2, 3], "character": ["a", "b"]}
+my_dict
+list(my_dict.keys())
+```
+
+Dictionaries can contain dictionaries (nested dictionaries)
+
+```{pyodide}
+nested_dict = {"a": {"b": {"c": "d"}}}
+nested_dict
+
+# more clearly visualised with pprint package
+from pprint import pprint
+pprint(nested_dict)
+```
+
+```{pyodide}
+# nested example
+another_nested_dict = {
+  "numeric": [1, 2, 3],
+  "characters": {"a": {"b": {"c": "d"}}},
+  "logical": True
+}
+pprint(another_nested_dict)
+```
+
+Subset dictionaries using square brackets
+
+```{pyodide}
+{key: my_dict[key] for key in ["logical", "numeric"]}
+```
+
+Access dictionary items with square brackets
+
+```{pyodide}
+# with square brackets supply item name in quotes - return
+my_dict["character"]
+
+# with the former approach, the item name can be supplied as an object
+x = "character"
+my_dict[x]
+```
+
+```{pyodide}
+{**my_dict["character"], **my_dict["logical"]}
+
+# Use [] to access elements of a dictionary without flattening
+{key: my_dict[key] for key in ["character", "logical"]}
+
+type({**my_dict["character"], **my_dict["logical"]}) # A dictionary 
+type({key: my_dict[key] for key in ["character", "logical"]}) # A dictionary
+```
+
+### DataFrames
+
+A special type of dictionary, where each item is a series of the same length
+
+```{pyodide}
+# create by hand with pd.DataFrame()
+pd.DataFrame({"x": [1, 2, 3], "y": ["a", "b"]})
+
+# convert from a dictionary with pd.DataFrame()
+df = pd.DataFrame(my_dict)
+df
+```
+
+Subset with square brackets
+
+```{pyodide}
+# first row, all columns
+df.iloc[0, :]
+
+# all rows, first two columns
+df.iloc[:, [0, 1]]
+
+# (also) all rows, first two columns
+df.loc[:, ["logical", "numeric"]]
+```
+
+Access columns with square brackets or dot notation. Both methods return a series
+
+```{pyodide}
+# with square brackets supply column name in quotes - return
+df["character"]
+
+# when using dot notation, quotes are not needed
+df.character
+
+# with the former approach, the column name can be supplied as an object
+x = "character"
+df[x]
+```
+
+### Functions
+
+Functions are blocks of code
+
+```{pyodide}
+# create a function with def <name>(): <INSERT CODE>
+def hello_world():
+  print("Hello world")
+
+# view the function by simply typing its name
+hello_world
+```
+
+Functions may be called to execute the code they contain
+
+```{pyodide}
+hello_world()
+```
+
+Arguments extend function utility
+
+```{pyodide}
+def hello(x):
+  print(f"Hello {x}")
+
+hello("world!")
+hello("moon!")
+```
+
+## Conditions
+
+### Comparison operators
+
+| Operator | Description              | Example  | Result  |
+|----------|--------------------------|----------|---------|
+| `==`     | Equal to                 | `5 == 5` | `True`  |
+| `!=`     | Not equal to             | `5 != 4` | `True`  |
+| `<`      | Less than                | `3 < 5`  | `True`  |
+| `>`      | Greater than             | `3 > 5`  | `False` |
+| `<=`     | Less than or equal to    | `3 <= 3` | `True`  |
+| `>=`     | Greater than or equal to | `3 >= 5` | `False` |
+
+### Logical operators
+
+| Operator | Description | Example | Result |
+|----------------|------------------------|----------------|----------------|
+| `&` | Element-wise AND | `[True, False] & [True, True]` | `[True, False]` |
+| `|` | Element-wise OR | `[True, False] | [False, True]` | `[True, True]` |
+| `not` | NOT | `not True` | `False` |
+| `in` | Checks if elements in one list are present in another list | `2 in [1, 2, 3]` | `True` |
+
+Examples
+
+```{pyodide}
+# returns True
+"a" in ["a", "b"]
+
+# returns False
+not True
+
+# returns True
+True or False
+
+# returns False
+True and False
+```
+
+### if, elif, else
+
+```{pyodide}
+# try assigning different values to x
+x = 3
+
+if x > 1:
+  print("x is bigger than 1")
+elif x == 1:
+  print("x equals 1")
+else:
+  print("x is greater than 1")
+```
+
+## Data wrangling
+
+With the foundational knowledge we've covered, we can now begin to manipulate our DataFrames effectively.
+
+### Filtering rows
+
+Use a boolean mask
+
+```{pyodide}
+# a boolean mask - a boolean list
+data_mask = df["numeric"] > 1
+data_mask
+
+# can be used to subset (filter) rows in a DataFrame
+df[data_mask]
+```
+
+### Creating columns
+
+```{pyodide}
+# create a new column
+new_column = ["Greater than 1" if x > 1 else "Less than 1" for x in df["numeric"]]
+df2 = df.copy()
+df2["greater_than_1"] = new_column
+df2
+
+# overwrite an existing column
+df3 = df2.copy()
+df3["character"] = df3["character"].str.upper()
+df3
+```
+
+## Loops
+
+Loops are an essential concept in programming, allowing you to automate repetitive tasks efficiently. They enable you to execute a block of code multiple times, which can save time and reduce errors in your code.
+
+### For loops
+
+Do something for each item in an iterable (list/dictionary)
+
+```{pyodide}
+for item in my_list:
+  print(type(item))
+```
+
+Can also loop through by index using `range()`
+
+```{pyodide}
+for i in range(len(my_list)):
+  print(i)
+  print(type(my_list[i]))
+```
+
+A common pattern is to create an empty list to hold the results from your loop
+
+```{pyodide}
+# initiate an empty list
+result = []
+
+# loop through an iterable
+iterable = [1, 2, 3, 4, 5]
+
+for i in range(len(iterable)):
+  result.append(iterable[i])
+
+# final result
+result
+```
+
+### While loops
+
+Continue looping while a certain condition is met (beware infinite loops!)
+
+```{pyodide}
+x = 0
+
+while x < 5:
+  print(x)
+  x += 1
+```
+
+## Exercises
+
+Now it's time to practice what you've learned. Try the following exercises. Hints are available if you get stuck, and your answers will be graded.
+
+### Exercise 1: Basic Arithmetic
+
+Calculate the sum of 15 and 25.
+
+```{pyodide}
+#| exercise: ex_1
+15 + ______
+```
+
+::: { .hint exercise="ex_1"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Remember to use the `+` operator for addition.
+
+```python
+15 + 25
+```
+:::
+:::
+
+::: { .solution exercise="ex_1" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Simply add the two numbers:
+
+```python
+15 + 25
+```
+:::
+:::
+
+```{pyodide}
+#| exercise: ex_1
+#| check: true
+if result == 40:
+  feedback = {"correct": True, "message": "Correct! Well done."}
+else:
+  feedback = {"correct": False, "message": "Incorrect. Try again."}
+feedback
+```
+
+### Exercise 2: Assigning Variables
+
+Assign the value 100 to a variable named `a` and the value 200 to a variable named `b`. Then calculate their sum.
+
+```{pyodide}
+#| exercise: ex_2
+a = ______
+b = ______
+a + b
+```
+
+::: { .hint exercise="ex_2"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Use the `=` operator to assign values to variables.
+
+```python
+a = 100
+b = 200
+```
+:::
+:::
+
+::: { .solution exercise="ex_2" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Assign the values and calculate the sum:
+
+```python
+a = 100
+b = 200
+a + b
+```
+:::
+:::
+
+```{pyodide}
+#| exercise: ex_2
+#| check: true
+if result == 300:
+  feedback = {"correct": True, "message": "Correct! Well done."}
+else:
+  feedback = {"correct": False, "message": "Incorrect. Try again."}
+feedback
+```
+
+### Exercise 3: Logical Operators
+
+Check if the number 5 is greater than 3 and less than 10.
+
+```{pyodide}
+#| exercise: ex_3
+5 > 3 and 5 < ______
+```
+
+::: { .hint exercise="ex_3"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Use the `and` operator to combine two logical conditions.
+
+```python
+5 > 3 and 5 < 10
+```
+:::
+:::
+
+::: { .solution exercise="ex_3" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Combine the two conditions using the `and` operator:
+
+```python
+5 > 3 and 5 < 10
+```
+:::
+:::
+
+```{pyodide}
+#| exercise: ex_3
+#| check: true
+if result == True:
+  feedback = {"correct": True, "message": "Correct! Well done."}
+else:
+  feedback = {"correct": False, "message": "Incorrect. Try again."}
+feedback
+```
+
+### Exercise 4: For Loop
+
+Write a for loop to create a list containing the numbers 1 to 5.
+
+```{pyodide}
+#| exercise: ex_4
+result = []
+for i in range(1, 6):
+  result.append(______)
+result
+```
+
+::: { .hint exercise="ex_4"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Use the `append()` method to add elements to a list.
+
+```python
+# empty list
+result = []
+
+# append `1` to the empty list using `append()`
+result.append(1)
+```
+:::
+:::
+
+::: { .solution exercise="ex_4" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Use `append()` to grow the list:
+
+```python
+result = []
+for i in range(1, 6):
+  result.append(i)
+result
+```
+:::
+:::
+
+```{pyodide}
+#| exercise: ex_4
+#| check: true
+if result == list(range(1, 6)):
+  feedback = {"correct": True, "message": "Correct! Well done."}
+else:
+  feedback = {"correct": False, "message": "Incorrect. Try again."}
+feedback
+```
+
+### Exercise 5: While Loop
+
+Write a while loop to create a list containing the numbers 1 to 5.
+
+```{pyodide}
+#| exercise: ex_5
+result = []
+x = 1
+while x <= 5:
+  result.append(x)
+  x += ______
+result
+```
+
+::: { .hint exercise="ex_5"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Increment the value of `x` by 1 in each iteration.
+
+```python
+x = 1
+
+# the loop will complete when the value of `x` reaches 6
+while x <= 5:
+  x += 1
+```
+:::
+:::
+
+::: { .solution exercise="ex_5" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Write the while loop to increment `x` and grow the list:
+
+```python
+result = []
+x = 1
+while x <= 5:
+  result.append(x)
+  x += 1
+result
+```
+:::
+:::
+
+```{pyodide}
+#| exercise: ex_5
+#| check: true
+if result == list(range(1, 6)):
+  feedback = {"correct": True, "message": "Correct! Well done."}
+else:
+  feedback = {"correct": False, "message": "Incorrect. Try again."}
+feedback
+```
+
+### Exercise 6: DataFrames - filter rows
+
+Filter this DataFrame for people aged 30 or older.
+
+```{pyodide}
+#| exercise: ex_6
+import pandas as pd
+df = pd.DataFrame({
+  "Name": ["Alice", "Bob", "Charlie"],
+  "Age": [25, 30, 35]
+})
+df[df["Age"] >= ______]
+```
+
+::: { .hint exercise="ex_6"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Use square brackets to filter rows.
+
+```python
+# Filter for rows where name is "Alice"
+df[df["Name"] == "Alice"]
+```
+:::
+:::
+
+::: { .solution exercise="ex_6" }
+::: { .callout-tip collapse="false"}
+## Fully worked solution:
+
+Filter the DataFrame using square brackets:
+
+```python
+df[df["Age"] >= 30]
+```
+:::
+:::
+
+```{pyodide}
+#| exercise: ex_6
+#| check: true
+expected = pd.DataFrame({"Name": ["Bob", "Charlie"], "Age": [30, 35]})
+if result.reset_index(drop=True).equals(expected.reset_index(drop=True)):
+  feedback = {"correct": True, "message": "Correct! Well done."}
+else:
+  feedback = {"correct": False, "message": "Incorrect. Try again."}
+feedback
+```

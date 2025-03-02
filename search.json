@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "blog/r-base_r_basics.html",
+    "href": "blog/r-base_r_basics.html",
+    "title": "R programming basics",
+    "section": "",
+    "text": "TLDR\n\n\n\n\nR can be used as a calculator for basic arithmetic operations.\nVariables are assigned using the &lt;- operator.\nData frames are used to store tabular data.\nUnderstanding different object types in R is crucial for data manipulation.\nLogical and comparison operators help in making decisions.\nLoops and functions are essential for repetitive tasks and code organization.\nWelcome to R programming! This guide will introduce you to the basics of R, starting with simple calculations, then moving on to assigning variables, working with data frames, and exploring different object types."
+  },
+  {
+    "objectID": "blog/r-base_r_basics.html#introduction",
+    "href": "blog/r-base_r_basics.html#introduction",
+    "title": "R programming basics",
+    "section": "Introduction",
+    "text": "Introduction\n\nUsing R as a Calculator\nR can be used to perform basic arithmetic operations just like a calculator.\n\n\n\n\n\n\n\n\nAssigning Variables\nIn R, you can assign values to variables using the &lt;- operator.\n\n\n\n\n\n\n\n\nData Frames\nData frames are a fundamental data structure in R, used to store tabular data. Each column in a data frame is a vector of values of the same type. This structure allows for efficient data manipulation and analysis. Data frames are actually a special type of list, where each item is a vector of the same length. Understanding the different types of variables in R is crucial for working with data frames. So far, we have only mentioned numeric types, but we will cover other types now!"
+  },
+  {
+    "objectID": "blog/r-base_r_basics.html#objects",
+    "href": "blog/r-base_r_basics.html#objects",
+    "title": "R programming basics",
+    "section": "Objects",
+    "text": "Objects\n\nBasic Types\nScalars\n\n\n\n\n\n\n\n\nVectors\nCombine objects of the same type in a vector\n\n\n\n\n\n\nAccess items using square brackets\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLists\nCombine objects of different types in a list\n\n\n\n\n\n\nList elements can be named\n\n\n\n\n\n\nLists can contain lists (nested lists)\n\n\n\n\n\n\n\n\n\n\n\n\nSubset lists using square brackets\n\n\n\n\n\n\nAccess list items with double square brackets or $\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Frames\nA special type of list, where each item is a vector of the same length\n\n\n\n\n\n\nSubset with square brackets\n\n\n\n\n\n\nAccess columns with double square brackets, or $. Both methods return a vector\n\n\n\n\n\n\n\n\nFunctions\nFunctions are blocks of code\n\n\n\n\n\n\nFunctions may be called to execute the code they contain\n\n\n\n\n\n\nArguments extend function utility"
+  },
+  {
+    "objectID": "blog/r-base_r_basics.html#conditions",
+    "href": "blog/r-base_r_basics.html#conditions",
+    "title": "R programming basics",
+    "section": "Conditions",
+    "text": "Conditions\n\nComparison operators\n\n\n\nOperator\nDescription\nExample\nResult\n\n\n\n\n==\nEqual to\n5 == 5\nTRUE\n\n\n!=\nNot equal to\n5 != 4\nTRUE\n\n\n&lt;\nLess than\n3 &lt; 5\nTRUE\n\n\n&gt;\nGreater than\n3 &gt; 5\nFALSE\n\n\n&lt;=\nLess than or equal to\n3 &lt;= 3\nTRUE\n\n\n&gt;=\nGreater than or equal to\n3 &gt;= 5\nFALSE\n\n\n\n\n\nLogical operators\n\n\n\n\n\n\n\n\n\nOperator\nDescription\nExample\nResult\n\n\n\n\n&\nElement-wise AND\nc(TRUE, FALSE) & c(TRUE, TRUE)\nTRUE FALSE\n\n\n|\nElement-wise OR\nc(TRUE, FALSE) | c(FALSE, TRUE)\nTRUE TRUE\n\n\n!\nNOT\n!TRUE\nFALSE\n\n\n%in%\nChecks if elements in one vector are present in another vector\n2 %in% c(1, 2, 3)\nTRUE\n\n\n\nExamples\n\n\n\n\n\n\n\n\nif, else if, else"
+  },
+  {
+    "objectID": "blog/r-base_r_basics.html#data-wrangling",
+    "href": "blog/r-base_r_basics.html#data-wrangling",
+    "title": "R programming basics",
+    "section": "Data wrangling",
+    "text": "Data wrangling\nWith the foundational knowledge we’ve covered, we can now begin to manipulate our data frames effectively.\n\nFiltering rows\nUse a data mask\n\n\n\n\n\n\n\n\nCreating columns"
+  },
+  {
+    "objectID": "blog/r-base_r_basics.html#loops",
+    "href": "blog/r-base_r_basics.html#loops",
+    "title": "R programming basics",
+    "section": "Loops",
+    "text": "Loops\nLoops are an essential concept in programming, allowing you to automate repetitive tasks efficiently. They enable you to execute a block of code multiple times, which can save time and reduce errors in your code.\n\nFor loops\nDo something for each item in an interable (vector/list)\n\n\n\n\n\n\nCan also loop through by index using seq_along()\n\n\n\n\n\n\nA common pattern is to create an empty list to hold the results from your loop\n\n\n\n\n\n\n\n\nWhile loops\nContinue looping while a certain condition is met (beware infinite loops!)"
+  },
+  {
+    "objectID": "blog/r-base_r_basics.html#exercises",
+    "href": "blog/r-base_r_basics.html#exercises",
+    "title": "R programming basics",
+    "section": "Exercises",
+    "text": "Exercises\nNow it’s time to practice what you’ve learned. Try the following exercises. Hints are available if you get stuck, and your answers will be graded.\n\nExercise 1: Basic Arithmetic\nCalculate the sum of 15 and 25.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember to use the + operator for addition.\n15 + 25\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nSimply add the two numbers:\n15 + 25\n\n\n\n\n\n\n\nExercise 2: Assigning Variables\nAssign the value 100 to a variable named a and the value 200 to a variable named b. Then calculate their sum.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse the &lt;- operator to assign values to variables.\na &lt;- 100\nb &lt;- 200\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nAssign the values and calculate the sum:\na &lt;- 100\nb &lt;- 200\na + b\n\n\n\n\n\n\n\nExercise 3: Logical Operators\nCheck if the number 5 is greater than 3 and less than 10.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse the & operator to combine two logical conditions.\n5 &gt; 3 & 5 &lt; 10\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nCombine the two conditions using the & operator:\n5 &gt; 3 & 5 &lt; 10\n\n\n\n\n\n\n\nExercise 4: For Loop\nWrite a for loop to create a list containing the numbers 1 to 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse the c() function to append to a list.\n# empty list\nresult &lt;- list()\n\n# append `1` to the empty list using `c()`\nresult &lt;- c(result, 1)\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nUse c() to grow the list:\nresult &lt;- list()\nfor (i in 1:5) {\n  result &lt;- c(result, i)\n}\nresult\n\n\n\n\n\n\n\nExercise 5: While Loop\nWrite a while loop to create a list containing the numbers 1 to 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nIncrement the value of x by 1 in each iteration.\nx &lt;- 1\n\n# the loop will complete when the value of `x` reaches 6\nwhile (x &lt;= 5) {\n  x &lt;- x + 1\n}\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nWrite the while loop to increment x and grow the list:\nresult &lt;- list()\nx &lt;- 1\nwhile (x &lt;= 5) {\n  result &lt;- c(result, x)\n  x &lt;- x + 1\n}\nresult\n\n\n\n\n\n\n\nExercise 6: Data Frames - filter rows\nFilter this data frame for people aged 30 or older.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse square brackets to filter rows.\n# Filter for rows where name is \"Alice\"\ndf[df$Name == \"Alice\", ]\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nFilter the data frame using square brackets:\ndf[df$Age &gt;= 30, ]"
+  },
+  {
+    "objectID": "blog_listing.html",
+    "href": "blog_listing.html",
+    "title": "Blog",
+    "section": "",
+    "text": "R programming basics\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nAbraham Olvera Barrios & Alasdair Warwick\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hello Data Science",
+    "section": "",
+    "text": "Start your journey here 🙂\nData science combines programming (Python, R, Bash), statistics, and machine learning to transform raw data into valuable insights. The real power comes from automation—writing scripts that can process enormous amounts of data consistently and repeatedly, enabling workflows impossible with manual methods. Today, AI-assisted programming tools make these skills more accessible than ever, allowing beginners to enter the field faster.\nHello Data Science is designed to provide a comprehensive foundation in all these essential skills. Rather than diving deep into just one specialty, we cover the full spectrum of knowledge needed by modern data scientists. This approach ensures you develop a solid base from which you can later specialise in machine learning, software engineering, data engineering, or other focus areas, while always understanding how your specialty connects to the broader data science ecosystem."
+  },
+  {
+    "objectID": "index.html#what-is-data-science",
+    "href": "index.html#what-is-data-science",
+    "title": "Hello Data Science",
+    "section": "What is Data Science?",
+    "text": "What is Data Science?\nImagine you have a mountain of information but no easy way to make sense of it. Data science gives you the tools to transform raw data into valuable insights that can help make better decisions.\nThink of data science as being a detective, but for information. You gather clues (data), use special tools to examine them (programming and statistics), and piece together the full story (analysis and visualization)."
+  },
+  {
+    "objectID": "index.html#the-core-skills-youll-need",
+    "href": "index.html#the-core-skills-youll-need",
+    "title": "Hello Data Science",
+    "section": "The Core Skills You’ll Need",
+    "text": "The Core Skills You’ll Need\n\n1. Programming Languages\n\nPython: The Swiss Army knife of data science\n\n\nVersatile and relatively easy to learn\nMassive ecosystem of data tools (pandas, numpy, scikit-learn)\nGreat for beginners and professionals alike\n\n\nR: The statistician’s best friend\n\n\nDesigned specifically for statistical analysis and visualization\nExcellent for creating detailed data graphics\nPowerful for specialized statistical techniques\n\n\nBash/Command Line: Your direct line to the computer\n\n\nEssential for navigating files and running programs efficiently\nAllows you to string together different tools quickly\nOpens up the full power of your computer beyond point-and-click interfaces\n\n\n\n2. Statistical Thinking\nStatistics is the language data speaks. You’ll need to understand:\n\nHow to summarise data (averages, ranges, distributions)\nHow to test ideas against data (hypothesis testing)\nHow to predict outcomes from patterns (regression, forecasting)\nHow to account for uncertainty in your conclusions\n\n\n\n3. Machine Learning & AI\nMachine learning is what allows computers to learn patterns from data without being explicitly programmed:\n\nSupervised learning (making predictions based on labeled examples)\nUnsupervised learning (finding hidden patterns and groups)\nDeep learning (using neural networks for complex problems like image recognition)\nModel evaluation (determining how well your models perform)\n\nAI tools provide the ability to work with unstructured data like text, images, and speech—expanding what’s possible with traditional data analysis.\n\n\n4. Data Handling Skills\n\nCleaning messy data (removing errors, handling missing values)\nTransforming data into useful formats\nMerging information from different sources\nStoring and retrieving data efficiently\n\n\n\n5. Visualization\n\nCreating clear, informative graphics\nChoosing the right visualization for your data\nCommunicating findings visually to non-technical audiences"
+  },
+  {
+    "objectID": "index.html#the-magic-of-automation-beyond-point-and-click",
+    "href": "index.html#the-magic-of-automation-beyond-point-and-click",
+    "title": "Hello Data Science",
+    "section": "The Magic of Automation: Beyond Point-and-Click",
+    "text": "The Magic of Automation: Beyond Point-and-Click\nHere’s where data science truly becomes powerful. Imagine these scenarios:\n\nWithout Automation (Manual Approach):\n\nYou need to clean 1,000 files with customer data\nFor each file, you’d need to open it, find errors, fix them, save it\nThis could take weeks of tedious work\nIf the process changes, you start over\n\n\n\nWith Automation (Data Science Approach):\n\nWrite a script once that defines the cleaning rules\nRun it on all 1,000 files in minutes\nIf something changes, update the script and rerun\nYour process is documented in code, making it repeatable and shareable\n\n\n\nWhy Automation Changes Everything\n\nScale: Process thousands or millions of data points instead of dozens\nConsistency: The same exact process happens every time\nReproducibility: Others can run your exact analysis and get the same results\nAdaptability: When requirements change, update the code instead of redoing everything\nDocumentation: Your code serves as a record of exactly what you did\n\n\n\nA Simple Example\nImagine you receive daily sales data files and need to:\n\nCheck for missing values\nCalculate daily totals by product category\nCreate a visualization of trends\nEmail a report to your team\n\nManual approach: 2-3 hours daily of opening files, copying data to Excel, making charts, writing emails\nAutomated approach:\n\nWrite a script that does all of the above\nSchedule it to run automatically every morning\nArrive at work with the report already in everyone’s inbox\nUse your time for analyzing the results instead of generating them"
+  },
+  {
+    "objectID": "index.html#ai-assisted-data-science-more-accessible-than-ever",
+    "href": "index.html#ai-assisted-data-science-more-accessible-than-ever",
+    "title": "Hello Data Science",
+    "section": "AI-Assisted Data Science: More Accessible Than Ever",
+    "text": "AI-Assisted Data Science: More Accessible Than Ever\nThe rise of AI-powered coding assistants has made data science significantly more accessible:\n\nCode completion tools suggest the next lines as you type\nAI programming assistants can write entire functions based on your description\nAutomated documentation helps explain what code does\nDebugging assistance spots errors and suggests fixes\nNatural language interfaces let you request complex operations in plain English\n\nWith these tools, beginners can:\n\nLearn faster by seeing correct code patterns\nOvercome syntax hurdles more easily\nFocus on concepts rather than memorizing commands\nAccomplish complex tasks before mastering all the underlying details\n\nThis democratization means you can start solving real problems much earlier in your learning journey than was possible just a few years ago."
+  },
+  {
+    "objectID": "index.html#starting-your-journey",
+    "href": "index.html#starting-your-journey",
+    "title": "Hello Data Science",
+    "section": "Starting Your Journey",
+    "text": "Starting Your Journey\n\nBegin with the basics of Bash, and either Python or R\nLearn to handle data files and do simple analysis\nPractice automating repetitive tasks\nBuild a foundation in statistics alongside your programming skills\nExperiment with AI coding assistants to accelerate your progress\nWork on projects using real data that interests you\n\nRemember: The goal isn’t just to learn programming languages or statistical formulas. The goal is to solve problems and answer questions using data. The programming and statistics are the tools that make this possible."
+  },
+  {
+    "objectID": "index.html#real-world-impact",
+    "href": "index.html#real-world-impact",
+    "title": "Hello Data Science",
+    "section": "Real-World Impact",
+    "text": "Real-World Impact\nData science automation enables:\n\nBusinesses to personalise recommendations for millions of customers\nMedical researchers to analyse genetic data across thousands of patients\nCities to optimise traffic flow based on millions of data points\nScientists to process satellite imagery of the entire planet\n\nNone of these would be possible with manual, point-and-click approaches. Automation is what transforms data from overwhelming to insightful."
+  },
+  {
+    "objectID": "index.html#where-do-i-start",
+    "href": "index.html#where-do-i-start",
+    "title": "Hello Data Science",
+    "section": "Where do I start?",
+    "text": "Where do I start?\nTODO\n\n‘Start here’ series of blog posts\nMore advanced (databases, API, web scraping, software engineering e.g. unit testing)"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]

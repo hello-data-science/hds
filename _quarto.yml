@@ -34,20 +34,6 @@ format:
       source: repo
       toggle: true
       caption: Code
-  live-html:
-    mermaid:
-      theme: default
-    theme:
-      light: flatly
-      dark: darkly
-    css: styles.css
-    toc: true
-    code-fold: true
-    code-link: true
-    code-tools:
-      source: repo
-      toggle: true
-      caption: Code
 
 editor: source
 

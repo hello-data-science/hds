@@ -2,7 +2,21 @@
 title: "R programming basics"
 date: "2025-03-01"
 author: "Abraham Olvera Barrios & Alasdair Warwick"
-format: live-html
+format:
+  live-html:
+    mermaid:
+      theme: default
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    code-fold: true
+    code-link: true
+    code-tools:
+      source: repo
+      toggle: true
+      caption: Code
 editor_options: 
   chunk_output_type: inline
 ---

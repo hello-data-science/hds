@@ -1,5 +1,6 @@
 ---
 title: "Hello Data Science"
+format: html
 ---
 
 > Start your journey here 🙂

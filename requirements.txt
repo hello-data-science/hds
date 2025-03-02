@@ -87,7 +87,6 @@ prompt-toolkit==3.0.36
 psutil==6.1.1
 ptyprocess==0.7.0
 pure_eval==0.2.3
-prompt_toolkit==3.0.50
 pycparser==2.22
 Pygments==2.18.0
 pyparsing==3.2.0
@@ -98,8 +97,6 @@ pytz==2024.2
 PyYAML==6.0.2
 pyzmq==26.2.0
 questionary==2.0.1
-radian=0.6.13
-rchitect=0.4.7
 referencing==0.35.1
 requests==2.32.3
 rfc3339-validator==0.1.4

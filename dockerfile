@@ -28,8 +28,8 @@ RUN ARCH=$(uname -m) && \
     else \
         echo "Unsupported architecture"; exit 1; \
     fi && \
-    curl -fsSL https://github.com/quarto-dev/quarto-cli/releases/download/v1.7.6/quarto-1.7.6-linux-${ARCH}.tar.gz | tar -xz -C /opt \
-    && ln -s /opt/quarto-1.7.6/bin/quarto /usr/local/bin/quarto
+    curl -fsSL https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.42/quarto-1.6.42-linux-${ARCH}.tar.gz | tar -xz -C /opt \
+    && ln -s /opt/quarto-1.6.42/bin/quarto /usr/local/bin/quarto
 
 # Verify Quarto installation
 RUN quarto --version

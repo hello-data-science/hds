@@ -3,6 +3,7 @@
     "listing": "/blog_listing.html",
     "items": [
       "/blog/r-base_r_basics.html",
+      "/blog/python-python_basics.html",
       "/blog/r-exercises.html"
     ]
   }

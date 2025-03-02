@@ -49,11 +49,18 @@
     "text": "Exercises\nNow it’s time to practice what you’ve learned. Try the following exercises. Hints are available if you get stuck, and your answers will be graded.\n\nExercise 1: Basic Arithmetic\nCalculate the sum of 15 and 25.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember to use the + operator for addition.\n15 + 25\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nSimply add the two numbers:\n15 + 25\n\n\n\n\n\n\n\nExercise 2: Assigning Variables\nAssign the value 100 to a variable named a and the value 200 to a variable named b. Then calculate their sum.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse the &lt;- operator to assign values to variables.\na &lt;- 100\nb &lt;- 200\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nAssign the values and calculate the sum:\na &lt;- 100\nb &lt;- 200\na + b\n\n\n\n\n\n\n\nExercise 3: Logical Operators\nCheck if the number 5 is greater than 3 and less than 10.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse the & operator to combine two logical conditions.\n5 &gt; 3 & 5 &lt; 10\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nCombine the two conditions using the & operator:\n5 &gt; 3 & 5 &lt; 10\n\n\n\n\n\n\n\nExercise 4: For Loop\nWrite a for loop to create a list containing the numbers 1 to 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse the c() function to append to a list.\n# empty list\nresult &lt;- list()\n\n# append `1` to the empty list using `c()`\nresult &lt;- c(result, 1)\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nUse c() to grow the list:\nresult &lt;- list()\nfor (i in 1:5) {\n  result &lt;- c(result, i)\n}\nresult\n\n\n\n\n\n\n\nExercise 5: While Loop\nWrite a while loop to create a list containing the numbers 1 to 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nIncrement the value of x by 1 in each iteration.\nx &lt;- 1\n\n# the loop will complete when the value of `x` reaches 6\nwhile (x &lt;= 5) {\n  x &lt;- x + 1\n}\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nWrite the while loop to increment x and grow the list:\nresult &lt;- list()\nx &lt;- 1\nwhile (x &lt;= 5) {\n  result &lt;- c(result, x)\n  x &lt;- x + 1\n}\nresult\n\n\n\n\n\n\n\nExercise 6: Data Frames - filter rows\nFilter this data frame for people aged 30 or older.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse square brackets to filter rows.\n# Filter for rows where name is \"Alice\"\ndf[df$Name == \"Alice\", ]\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nFilter the data frame using square brackets:\ndf[df$Age &gt;= 30, ]"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "blog/r-exercises.html#exercises",
+    "href": "blog/r-exercises.html#exercises",
+    "title": "Miscellaneous R Exercises",
+    "section": "Exercises",
+    "text": "Exercises\n\ndplyr Select vs Base R\nWrite the dplyr equivalent for selecting columns “Sepal.Length” and “Sepal.Width” from the iris dataset.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nUse dplyr::select() to select specific columns.\niris |&gt;\n    select(Sepal.Length)\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nUse select() to select the columns:\niris |&gt;\n    select(Sepal.Length, Sepal.Width)\n\n\n\n\n\n\n\ndplyr Filter vs Base R\nWrite the dplyr equivalent for filtering rows where Sepal.Length is less than 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nUse dplyr::filter() to filter rows based on a condition.\niris |&gt;\n    filter(Sepal.Length == 5)\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nUse dplyr::filter() to filter the rows:\niris |&gt;\n    filter(Sepal.Length &lt; 5)\n\n\n\n\n\n\n\ndplyr Select and Filter vs Base R\nWrite the dplyr equivalent for selecting columns “Sepal.Length” and “Sepal.Width” from rows where Sepal.Length is less than 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nUse dplyr::filter() and dplyr::select() together.\niris |&gt;\n    filter(Sepal.Length &gt; 5) |&gt;\n    select(Sepal.Width)\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nUse dplyr::filter() and dplyr::select() together:\niris |&gt;\n    filter(Sepal.Length &lt; 5) |&gt;\n    select(Sepal.Length, Sepal.Width)\n\n\n\n\n\n\n\ndplyr Pull vs Base R\nWrite the dplyr equivalent for pulling the Sepal.Length column from rows where Sepal.Length is less than 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nUse dplyr::pull() to extract a single column.\niris |&gt;\n    filter(Sepal.Length &gt;= 5) |&gt;\n    pull(Sepal.Width)\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nUse dplyr::filter() and dplyr::pull() together:\niris |&gt;\n    filter(Sepal.Length &lt; 5) |&gt;\n    pull(Sepal.Length)"
+  },
+  {
+    "objectID": "blog_listing.html",
+    "href": "blog_listing.html",
+    "title": "Blog",
     "section": "",
-    "text": "About this site"
+    "text": "R programming basics\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nAbraham Olvera Barrios & Alasdair Warwick\n\n\n\n\n\n\n\n\n\n\n\n\nPython Programming Basics\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nAbraham Olvera Barrios & Alasdair Warwick\n\n\n\n\n\n\n\n\n\n\n\n\nMiscellaneous R Exercises\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nAlasdair Warwick\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -112,17 +119,59 @@
     "text": "Where do I start?\nTODO\n\n‘Start here’ series of blog posts\nMore advanced (databases, API, web scraping, software engineering e.g. unit testing)"
   },
   {
-    "objectID": "blog_listing.html",
-    "href": "blog_listing.html",
-    "title": "Blog",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "R programming basics\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nAbraham Olvera Barrios & Alasdair Warwick\n\n\n\n\n\n\n\n\n\n\n\n\nMiscellaneous R Exercises\n\n\n\n\n\n\n\n\n\n\n\nMar 1, 2025\n\n\nAlasdair Warwick\n\n\n\n\n\n\nNo matching items"
+    "text": "About this site"
   },
   {
-    "objectID": "blog/r-exercises.html#exercises",
-    "href": "blog/r-exercises.html#exercises",
-    "title": "Miscellaneous R Exercises",
+    "objectID": "blog/python-python_basics.html",
+    "href": "blog/python-python_basics.html",
+    "title": "Python Programming Basics",
+    "section": "",
+    "text": "TLDR\n\n\n\n\nPython can be used as a calculator for basic arithmetic operations.\nVariables are assigned using the = operator.\nDataFrames are used to store tabular data using the pandas library.\nUnderstanding different object types in Python is crucial for data manipulation.\nLogical and comparison operators help in making decisions.\nLoops and functions are essential for repetitive tasks and code organization.\nWelcome to Python programming! This guide will introduce you to the basics of Python, starting with simple calculations, then moving on to assigning variables, working with DataFrames, and exploring different object types."
+  },
+  {
+    "objectID": "blog/python-python_basics.html#introduction",
+    "href": "blog/python-python_basics.html#introduction",
+    "title": "Python Programming Basics",
+    "section": "Introduction",
+    "text": "Introduction\n\nUsing Python as a Calculator\nPython can be used to perform basic arithmetic operations just like a calculator.\n\n\n\n\n\n\n\n\nAssigning Variables\nIn Python, you can assign values to variables using the = operator.\n\n\n\n\n\n\n\n\nDataFrames\nDataFrames are a fundamental data structure in Python, used to store tabular data. Each column in a DataFrame is a series of values of the same type. This structure allows for efficient data manipulation and analysis. DataFrames are created using the pandas library."
+  },
+  {
+    "objectID": "blog/python-python_basics.html#objects",
+    "href": "blog/python-python_basics.html#objects",
+    "title": "Python Programming Basics",
+    "section": "Objects",
+    "text": "Objects\n\nBasic Types\nScalars\n\n\n\n\n\n\n\n\nLists\nCombine objects of the same type in a list\n\n\n\n\n\n\nAccess items using square brackets\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDictionaries\nCombine objects of different types in a dictionary\n\n\n\n\n\n\nDictionaries can contain dictionaries (nested dictionaries)\n\n\n\n\n\n\n\n\n\n\n\n\nSubset dictionaries using square brackets\n\n\n\n\n\n\nAccess dictionary items with square brackets\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDataFrames\nA special type of dictionary, where each item is a series of the same length\n\n\n\n\n\n\nSubset with square brackets\n\n\n\n\n\n\nAccess columns with square brackets or dot notation. Both methods return a series\n\n\n\n\n\n\n\n\nFunctions\nFunctions are blocks of code\n\n\n\n\n\n\nFunctions may be called to execute the code they contain\n\n\n\n\n\n\nArguments extend function utility"
+  },
+  {
+    "objectID": "blog/python-python_basics.html#conditions",
+    "href": "blog/python-python_basics.html#conditions",
+    "title": "Python Programming Basics",
+    "section": "Conditions",
+    "text": "Conditions\n\nComparison operators\n\n\n\nOperator\nDescription\nExample\nResult\n\n\n\n\n==\nEqual to\n5 == 5\nTrue\n\n\n!=\nNot equal to\n5 != 4\nTrue\n\n\n&lt;\nLess than\n3 &lt; 5\nTrue\n\n\n&gt;\nGreater than\n3 &gt; 5\nFalse\n\n\n&lt;=\nLess than or equal to\n3 &lt;= 3\nTrue\n\n\n&gt;=\nGreater than or equal to\n3 &gt;= 5\nFalse\n\n\n\n\n\nLogical operators\n\n\n\n\n\n\n\n\n\nOperator\nDescription\nExample\nResult\n\n\n\n\n&\nElement-wise AND\n[True, False] & [True, True]\n[True, False]\n\n\n|\nElement-wise OR\n[True, False] | [False, True]\n[True, True]\n\n\nnot\nNOT\nnot True\nFalse\n\n\nin\nChecks if elements in one list are present in another list\n2 in [1, 2, 3]\nTrue\n\n\n\nExamples\n\n\n\n\n\n\n\n\nif, elif, else"
+  },
+  {
+    "objectID": "blog/python-python_basics.html#data-wrangling",
+    "href": "blog/python-python_basics.html#data-wrangling",
+    "title": "Python Programming Basics",
+    "section": "Data wrangling",
+    "text": "Data wrangling\nWith the foundational knowledge we’ve covered, we can now begin to manipulate our DataFrames effectively.\n\nFiltering rows\nUse a boolean mask\n\n\n\n\n\n\n\n\nCreating columns"
+  },
+  {
+    "objectID": "blog/python-python_basics.html#loops",
+    "href": "blog/python-python_basics.html#loops",
+    "title": "Python Programming Basics",
+    "section": "Loops",
+    "text": "Loops\nLoops are an essential concept in programming, allowing you to automate repetitive tasks efficiently. They enable you to execute a block of code multiple times, which can save time and reduce errors in your code.\n\nFor loops\nDo something for each item in an iterable (list/dictionary)\n\n\n\n\n\n\nCan also loop through by index using range()\n\n\n\n\n\n\nA common pattern is to create an empty list to hold the results from your loop\n\n\n\n\n\n\n\n\nWhile loops\nContinue looping while a certain condition is met (beware infinite loops!)"
+  },
+  {
+    "objectID": "blog/python-python_basics.html#exercises",
+    "href": "blog/python-python_basics.html#exercises",
+    "title": "Python Programming Basics",
     "section": "Exercises",
-    "text": "Exercises\n\ndplyr Select vs Base R\nWrite the dplyr equivalent for selecting columns “Sepal.Length” and “Sepal.Width” from the iris dataset.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nUse dplyr::select() to select specific columns.\niris |&gt;\n    select(Sepal.Length)\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nUse select() to select the columns:\niris |&gt;\n    select(Sepal.Length, Sepal.Width)\n\n\n\n\n\n\n\ndplyr Filter vs Base R\nWrite the dplyr equivalent for filtering rows where Sepal.Length is less than 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nUse dplyr::filter() to filter rows based on a condition.\niris |&gt;\n    filter(Sepal.Length == 5)\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nUse dplyr::filter() to filter the rows:\niris |&gt;\n    filter(Sepal.Length &lt; 5)\n\n\n\n\n\n\n\ndplyr Select and Filter vs Base R\nWrite the dplyr equivalent for selecting columns “Sepal.Length” and “Sepal.Width” from rows where Sepal.Length is less than 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nUse dplyr::filter() and dplyr::select() together.\niris |&gt;\n    filter(Sepal.Length &gt; 5) |&gt;\n    select(Sepal.Width)\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nUse dplyr::filter() and dplyr::select() together:\niris |&gt;\n    filter(Sepal.Length &lt; 5) |&gt;\n    select(Sepal.Length, Sepal.Width)\n\n\n\n\n\n\n\ndplyr Pull vs Base R\nWrite the dplyr equivalent for pulling the Sepal.Length column from rows where Sepal.Length is less than 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint\n\n\n\n\n\nUse dplyr::pull() to extract a single column.\niris |&gt;\n    filter(Sepal.Length &gt;= 5) |&gt;\n    pull(Sepal.Width)\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nUse dplyr::filter() and dplyr::pull() together:\niris |&gt;\n    filter(Sepal.Length &lt; 5) |&gt;\n    pull(Sepal.Length)"
+    "text": "Exercises\nNow it’s time to practice what you’ve learned. Try the following exercises. Hints are available if you get stuck, and your answers will be graded.\n\nExercise 1: Basic Arithmetic\nCalculate the sum of 15 and 25.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nRemember to use the + operator for addition.\n15 + 25\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nSimply add the two numbers:\n15 + 25\n\n\n\n\n\n\n\nExercise 2: Assigning Variables\nAssign the value 100 to a variable named a and the value 200 to a variable named b. Then calculate their sum.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse the = operator to assign values to variables.\na = 100\nb = 200\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nAssign the values and calculate the sum:\na = 100\nb = 200\na + b\n\n\n\n\n\n\n\nExercise 3: Logical Operators\nCheck if the number 5 is greater than 3 and less than 10.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse the and operator to combine two logical conditions.\n5 &gt; 3 and 5 &lt; 10\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nCombine the two conditions using the and operator:\n5 &gt; 3 and 5 &lt; 10\n\n\n\n\n\n\n\nExercise 4: For Loop\nWrite a for loop to create a list containing the numbers 1 to 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse the append() method to add elements to a list.\n# empty list\nresult = []\n\n# append `1` to the empty list using `append()`\nresult.append(1)\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nUse append() to grow the list:\nresult = []\nfor i in range(1, 6):\n  result.append(i)\nresult\n\n\n\n\n\n\n\nExercise 5: While Loop\nWrite a while loop to create a list containing the numbers 1 to 5.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nIncrement the value of x by 1 in each iteration.\nx = 1\n\n# the loop will complete when the value of `x` reaches 6\nwhile x &lt;= 5:\n  x += 1\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nWrite the while loop to increment x and grow the list:\nresult = []\nx = 1\nwhile x &lt;= 5:\n  result.append(x)\n  x += 1\nresult\n\n\n\n\n\n\n\nExercise 6: DataFrames - filter rows\nFilter this DataFrame for people aged 30 or older.\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\nUse square brackets to filter rows.\n# Filter for rows where name is \"Alice\"\ndf[df[\"Name\"] == \"Alice\"]\n\n\n\n\n\n\n\n\n\n\n\nFully worked solution:\n\n\n\n\n\nFilter the DataFrame using square brackets:\ndf[df[\"Age\"] &gt;= 30]"
   }
 ]
